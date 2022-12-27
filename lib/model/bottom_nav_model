@@ -1,0 +1,33 @@
+import 'dart:convert';
+
+List<BottomNav> bottomNavFromJson(String str) => List<BottomNav>.from(json.decode(str).map((x) => BottomNav.fromJson(x)));
+
+String bottomNavToJson(List<BottomNav> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
+class BottomNav {
+    BottomNav({
+        required this.id,
+        required this.title,
+        required this.icon,
+        required this.link,
+    });
+
+    int id;
+    String title;
+    String icon;
+    String link;
+
+    factory BottomNav.fromJson(Map<dynamic, dynamic> json) => BottomNav(
+        id: json["id"],
+        title: json["title"],
+        icon: json["icon"],
+        link: json["link"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "id": id,
+        "title": title,
+        "icon": icon,
+        "link": link,
+    };
+}
